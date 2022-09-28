@@ -1,0 +1,12 @@
+node("ubuntu-build-node") 
+    {
+        stage("Git Clone")
+        {
+           git branch: 'main', url: 'https://github.com/spring-projects/spring-petclinic.git'
+        }
+
+        stage("Maven Package")
+        {
+           sh '/usr/local/bin/mvn/bin/mvn package'           
+        }
+    }
