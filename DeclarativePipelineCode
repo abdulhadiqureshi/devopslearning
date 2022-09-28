@@ -1,0 +1,17 @@
+pipeline {
+        agent any
+  stages {
+        stage('Git Clone') {
+            agent { label 'ubuntu-build-node' }
+            steps {
+                git url: 'https://github.com/spring-projects/spring-petclinic.git', branch: 'main'
+                  }
+                    }
+        stage('Maven Build') {
+            agent { label 'ubuntu-build-node' }
+            steps {
+                 sh "/usr/local/bin/mvn/bin/mvn package"
+                 }
+        }
+    }
+}
